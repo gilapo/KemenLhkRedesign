@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="isi">Isi Berita</label>
-                    <input name="isi" id="isi" cols="30" rows="10" value="<?= old('isi'); ?>">
+                    <textarea name="isi" id="isi" cols="30" rows="10" value="<?= old('isi'); ?>"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>

@@ -54,7 +54,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $i['judul']; ?></h5>
                                         <p class="card-text"><?= $i['deskripsi']; ?></p>
-                                        <a href="<?= $i['slug']; ?>">selengkapnya</a>
+                                        <a href="/berita/<?= $i['slug']; ?>">selengkapnya</a>
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">dibuat pada <?= $i['created_at']; ?></small>
@@ -62,7 +62,9 @@
                                 </div>
                             <?php endforeach ?>
                         </div>
-                        <a href="berita/create" class="btn btn-success mt-5">Tambah Berita</a>
+                        <div class="mt-2">
+                            <h6><a href="berita/index">Tampilkan berita Lebih banyak....</a></h6>
+                        </div>
                     </div>
                 </div>
             </div>

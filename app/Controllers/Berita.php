@@ -5,18 +5,28 @@ namespace App\Controllers;
 class Berita extends BaseController
 {
 
+    public function index()
+    {
+        // $isi = $this->model->findAll();
+        $data = [
+            'judul' => 'kementrian Lingkungan Hidup dan kehutanan',
+            'berita' => $this->beritaModel->getAllBerita(),
+        ];
+        return view('Berita/berita', $data);
+    }
+
     public function detail($slug)
     {
         $data = [
             'judul' => 'berita',
-            'berita' => $this->beritaModel->getBerita($slug)
+            'berita' => $this->beritaModel->getAllBerita($slug)
         ];
 
         if (empty($data['berita'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('berita tidak ditemukan');
         }
 
-        return view('berita/berita', $data);
+        return view('berita/detilberita', $data);
     }
 
     public function create()
@@ -53,7 +63,7 @@ class Berita extends BaseController
         ])) {
             // $validation = \Config\Services::validation();
             // return redirect()->to('/berita/create')->withInput()->with('validation', $validation);
-            return redirect()->to('/berita/create')->withInput();
+            return redirect()->to('/create')->withInput();
         }
 
         $sampul = $this->request->getFile('sampul');
@@ -77,7 +87,7 @@ class Berita extends BaseController
     public function delete($id)
     {
         $berita = $this->beritaModel->find('id');
-        unlink('img/' . $berita['sampul']);
+        //unlink('img/' . $berita['sampul']);
         $this->beritaModel->delete($id);
         session()->setFlashdata('pesan', 'Berita Dihapus');
         return redirect()->to("/");
@@ -88,7 +98,7 @@ class Berita extends BaseController
         $data = [
             'judul' => 'ubah berita',
             'validation' => \Config\Services::validation(),
-            'berita' => $this->beritaModel->getBerita($slug)
+            'berita' => $this->beritaModel->getAllBerita($slug)
         ];
 
         return view('berita/editBerita', $data);
@@ -96,7 +106,7 @@ class Berita extends BaseController
 
     public function update($id)
     {
-        $isiLama = $this->beritaModel->getBerita($this->request->getVar('slug'));
+        $isiLama = $this->beritaModel->getAllBerita($this->request->getVar('slug'));
         if ($isiLama['judul'] == $this->request->getVar('judul')) {
             $rule_judul = 'required';
         } else {
@@ -131,7 +141,6 @@ class Berita extends BaseController
             $sampul->move('img', $namaSampul);
             unlink('img/' . $this->request->getVar('sampulLama'));
         }
-
         $slug = url_title($this->request->getVar('judul'), '-', true);
         $this->beritaModel->save([
             'id' => $id,

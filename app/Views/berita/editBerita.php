@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="isi">Isi Berita</label>
-                    <input name="isi" id="isi" cols="30" rows="10" value="<?= (old('isi')) ? old('isi') : $berita['isi']; ?>">
+                    <textarea name="isi" id="isi" cols="30" rows="10"> </textarea>
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>

@@ -21,6 +21,7 @@
 
     <!-- content -->
     <?= $this->renderSection('content'); ?>
+    <?= $this->include('layout/footer'); ?>
     <!-- end content -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -30,7 +31,8 @@
     <script src="<?= base_url('ckeditor/ckeditor.js'); ?>"></script>
     <script>
         CKEDITOR.replace('isi');
-
+    </script>
+    <script>
         function imgPreview() {
             const sampul = document.querySelector('#sampul');
             const sampulLabel = document.querySelector('.custom-file-label');

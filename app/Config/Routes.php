@@ -32,10 +32,14 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/berita/create', 'Berita::create/$1');
+$routes->group('', ['filter' => 'login'], function ($routes) {
+	$routes->get('/admin', 'admin::index');
+});
+$routes->get('/berita/index', 'Berita::index/$1');
+$routes->get('/create', 'Berita::create/$1');
 $routes->delete('/berita/(:num)', 'Berita::delete/$1');
 $routes->get('/berita/edit/(:segment)', 'Berita::edit/$1');
-$routes->get('/(:any)', 'Berita::detail/$1');
+$routes->get('/berita/(:any)', 'Berita::detail/$1');
 
 /**
  * --------------------------------------------------------------------

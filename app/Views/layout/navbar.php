@@ -1,13 +1,13 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand ml-4 mt-3 mb-2" href="#">
+    <a class="navbar-brand ml-4 mb-2" href="#">
         <img src="<?= base_url('images/LOGO_menlhk.png'); ?>" width="300">
     </a>
-    <ul class="mt-3 mb-2">
+    <ul class="mb-2">
         <img src="<?= base_url('images/anu.png'); ?>" width="700">
     </ul>
     <form class="form-inline mr-4">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 " type="submit">Search</button>
     </form>
 </nav>
 

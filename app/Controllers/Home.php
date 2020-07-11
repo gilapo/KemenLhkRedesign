@@ -16,7 +16,7 @@ class Home extends BaseController
 		// $isi = $this->model->findAll();
 		$data = [
 			'judul' => 'kementrian Lingkungan Hidup dan kehutanan',
-			'berita' => $this->beritaModel->getBerita()
+			'berita' => $this->beritaModel->getNewBerita(),
 		];
 		return view('home/home', $data);
 	}

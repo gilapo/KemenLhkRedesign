@@ -30,8 +30,8 @@
             <p class="lead"><?= $berita['isi']; ?></p>
 
             <hr>
-
-            <a href="" class="btn btn-warning">Ubah</a>
+            <!-- edit delete -->
+            <a href="/berita/edit/<?= $berita['slug']; ?>" class="btn btn-warning">Edit</a>
             <form action="/berita/<?= $berita['id']; ?>" method="POST" class="d-inline">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="_method" value="DELETE">
